@@ -153,3 +153,105 @@
 ---
 
 Хочешь, чтобы я следом написал **готовый SQL-скрипт `CREATE TABLE`** со всеми ограничениями и внешними ключами в правильном порядке создания? Или сначала уточним спорные моменты (например, по Supplier и датам)?
+
+
+USE [ИмяТвоейБазы];
+GO
+
+-- ============================================
+-- 1. Category
+-- ============================================
+ALTER TABLE [Category] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 2. Unit
+-- ============================================
+ALTER TABLE [Unit] ALTER COLUMN [Name] NVARCHAR(20) NOT NULL;
+GO
+
+-- ============================================
+-- 3. Manufacture
+-- ============================================
+ALTER TABLE [Manufacture] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 4. Supplier
+-- ============================================
+ALTER TABLE [Supplier] ALTER COLUMN [Name] NVARCHAR(100) NOT NULL;
+GO
+
+-- ============================================
+-- 5. Type (зарезервированное слово - экранируем)
+-- ============================================
+ALTER TABLE [Type] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 6. Role
+-- ============================================
+ALTER TABLE [Role] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 7. User (зарезервированное слово)
+-- ============================================
+ALTER TABLE [User] ALTER COLUMN [Name]     NVARCHAR(50)  NOT NULL;
+ALTER TABLE [User] ALTER COLUMN [SurName]  NVARCHAR(50)  NOT NULL;
+ALTER TABLE [User] ALTER COLUMN [LastName] NVARCHAR(50)  NULL;
+ALTER TABLE [User] ALTER COLUMN [Login]    NVARCHAR(100) NOT NULL;
+ALTER TABLE [User] ALTER COLUMN [Password] NVARCHAR(255) NOT NULL;
+GO
+
+-- ============================================
+-- 8. Status
+-- ============================================
+ALTER TABLE [Status] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 9. Order (зарезервированное слово)
+-- ============================================
+ALTER TABLE [Order] ALTER COLUMN [CreateAt]   DATE NOT NULL;
+ALTER TABLE [Order] ALTER COLUMN [DeliveryAt] DATE NULL;
+ALTER TABLE [Order] ALTER COLUMN [Code]       INT  NOT NULL;
+GO
+
+-- ============================================
+-- 10. Product
+-- ============================================
+ALTER TABLE [Product] ALTER COLUMN [Article]     NVARCHAR(20)   NOT NULL;
+ALTER TABLE [Product] ALTER COLUMN [Cost]        DECIMAL(10,2)  NOT NULL;
+ALTER TABLE [Product] ALTER COLUMN [Sale]        TINYINT        NOT NULL;
+ALTER TABLE [Product] ALTER COLUMN [Quantity]    INT            NOT NULL;
+ALTER TABLE [Product] ALTER COLUMN [Description] NVARCHAR(500)  NULL;
+ALTER TABLE [Product] ALTER COLUMN [Photo]       NVARCHAR(255)  NULL;
+GO
+
+-- ============================================
+-- 11. OrderProduct
+-- ============================================
+ALTER TABLE [OrderProduct] ALTER COLUMN [Quantity] INT NOT NULL;
+GO
+
+-- ============================================
+-- 12. Address
+-- ============================================
+ALTER TABLE [Address] ALTER COLUMN [PostCode]    CHAR(6)      NOT NULL;
+ALTER TABLE [Address] ALTER COLUMN [HouseNumber] NVARCHAR(10) NOT NULL;
+GO
+
+-- ============================================
+-- 13. Street
+-- ============================================
+ALTER TABLE [Street] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+-- ============================================
+-- 14. City
+-- ============================================
+ALTER TABLE [City] ALTER COLUMN [Name] NVARCHAR(50) NOT NULL;
+GO
+
+
